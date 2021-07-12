@@ -58,7 +58,8 @@
     self.sendValueBlock = block;
 }
 
-- (void)clickButton {
+- (void)clickButton
+{
     [self.navigationController popViewControllerAnimated: YES];
     NSString* str = self.textView.text;
     if (str.length > 0)

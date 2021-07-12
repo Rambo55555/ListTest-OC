@@ -18,12 +18,13 @@
 
 typedef void(^sendValueByBlock)(NSString* _Nullable str);
 
-@interface NewViewController : UIViewController
+@interface NewViewController: UIViewController
 
 @property (nonatomic, copy) sendValueByBlock _Nullable sendValueBlock;
 @property (strong,nonatomic) NSString * _Nullable str;
 @property (nonatomic, weak, nullable) id <NeWViewControllerDelegate> delegate;
 
 - (void)returnSendValue:(sendValueByBlock _Nonnull )block;
+
 @end
 

@@ -111,16 +111,17 @@ const NSInteger rowNum = 3;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.indexPath = indexPath;
-    NewViewController *newView = [[NewViewController alloc]init];
+    NewViewController *newView = [[NewViewController alloc] init];
     // - MARK: 从前往后传值是否是这样
     newView.str = self.array[self.indexPath.section][self.indexPath.row];
     newView.delegate = self;
-//    newView.sendValueBlock = ^(NSString *str) {
+    __weak typeof(self) weakSelf = self;
+    newView.sendValueBlock = ^(NSString *str) {
+        weakSelf.title = str;
+    };
+//    [newView returnSendValue:^(NSString *str) {
 //        self.title = str;
-//    };
-    [newView returnSendValue:^(NSString *str) {
-        self.title = str;
-    }];
+//    }];
     [self.navigationController pushViewController:newView animated:YES];
 }
 
